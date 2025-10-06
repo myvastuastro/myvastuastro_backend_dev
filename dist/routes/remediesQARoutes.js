@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const remediesQAController_1 = require("../controllers/remediesQAController");
+const router = (0, express_1.Router)();
+router.post("/", remediesQAController_1.createRemediesQA);
+router.get("/", remediesQAController_1.getAllRemediesQAs);
+router.get("/:id", remediesQAController_1.getRemediesQAById);
+router.get("/:userId", remediesQAController_1.getRemediesQAByUserId);
+router.put("/:id", remediesQAController_1.updateRemediesQA);
+router.delete("/:id", remediesQAController_1.deleteRemediesQA);
+exports.default = router;

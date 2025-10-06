@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const luckuNumberColorController_1 = require("../controllers/luckuNumberColorController");
+const router = (0, express_1.Router)();
+router.post("/", luckuNumberColorController_1.createLuckyNumberColor);
+router.get("/", luckuNumberColorController_1.getAllLuckyNumberColors);
+router.get("/:id", luckuNumberColorController_1.getLuckyNumberColor);
+router.get("/search/query", luckuNumberColorController_1.searchLuckyNumberColor);
+router.put("/:id", luckuNumberColorController_1.updateLuckyNumberColor);
+router.delete("/:id", luckuNumberColorController_1.deleteLuckyNumberColor);
+exports.default = router;

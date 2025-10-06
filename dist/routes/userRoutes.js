@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const userController_1 = require("../controllers/userController");
+const router = express_1.default.Router();
+router.post('/login/email', userController_1.loginByEmailAndPassword);
+router.post('/login/mobile', userController_1.loginByMobileAndOTP);
+router.post('/register', userController_1.registerUser);
+router.get('/all', userController_1.getAll);
+router.get('/getById/:id', userController_1.getById);
+router.post('/send-otp', userController_1.sendOTPController);
+router.post('/verify-otp', userController_1.verifyOTP);
+router.get('/deleteAccount/:id/:status', userController_1.disableAccout);
+router.delete('/deleteUser/:id/', userController_1.deleteUser);
+router.put('/update/:id', userController_1.updateUserById);
+router.post('/create', userController_1.createUser);
+exports.default = router;

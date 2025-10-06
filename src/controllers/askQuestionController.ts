@@ -1,0 +1,74 @@
+import { Request, Response } from 'express';
+import { AskQuestionService } from '../services/askQuestionService';
+export async function createAskQuestion(req: Request, res: Response): Promise<void> {
+    try {
+        const askQuestion = await AskQuestionService.createAskQuestion(req.body);
+        if (askQuestion) {
+            res.status(200).json({ message: 'Submit successful', data: askQuestion, status: "success", statusCode: 200 });
+        } else {
+            res.status(400).json({ message: 'Failed', status: "fail", statusCode: 400, data: askQuestion });
+        }
+
+    } catch (error) {
+        res.status(400).json({ message: 'Failed', status: "fail", statusCode: 400, data: error });
+    }
+}
+
+export async function getAskQuestion(req: Request, res: Response): Promise<void> {
+    try {
+        const { userId } = req.params;
+        const askQuestion = await AskQuestionService.getById(userId);
+        if (askQuestion) {
+            res.status(200).json({ message: 'Find successful', data: askQuestion, status: "success", statusCode: 200 });
+        } else {
+            res.status(400).json({ message: 'Failed', status: "fail", statusCode: 400, data: askQuestion });
+        }
+
+    } catch (error) {
+        res.status(400).json({ message: 'AskQuestion not found', status: "fail", statusCode: 400, data: error });
+
+    }
+}
+
+export async function updateAskQuestion(req: Request, res: Response): Promise<void> {
+    try {
+        const { id } = req.params;
+        const askQuestion = await AskQuestionService.updateAskQuestion(id, req.body);
+        if (askQuestion) {
+            res.status(200).json({ message: 'Update successful', data: askQuestion, status: "success", statusCode: 200 });
+        } else {
+            res.status(400).json({ message: 'Failed', status: "fail", statusCode: 400, data: askQuestion });
+        }
+    } catch (error) {
+        res.status(400).json({ message: 'AskQuestion not found', status: "fail", statusCode: 400, data: error });
+    }
+   
+}
+
+export async function deleteAskQuestion(req: Request, res: Response): Promise<void> {
+    try {
+        const { id } = req.params;
+        const askQuestion = await AskQuestionService.deleteAskQuestion(id);
+        if (askQuestion) {
+            res.status(200).json({ message: 'Delete successful', data: askQuestion, status: "success", statusCode: 200 });
+        } else {
+            res.status(400).json({ message: 'Failed', status: "fail", statusCode: 400, data: askQuestion });
+        }
+    } catch (error) {
+        res.status(400).json({ message: 'AskQuestion not found', status: "fail", statusCode: 400, data: error });
+    }
+}
+
+export async function getAllAskQuestions(req: Request, res: Response): Promise<void> {
+    try {
+        const askQuestion = await AskQuestionService.getAll();
+        if (askQuestion) {
+            res.status(200).json({ message: 'Find successful', data: askQuestion, status: "success", statusCode: 200 });
+        } else {
+            res.status(400).json({ message: 'Failed', status: "fail", statusCode: 400, data: askQuestion });
+        }
+    } catch (error) {
+        res.status(400).json({ message: 'AskQuestion not found', status: "fail", statusCode: 400, data: error });
+    }
+}
+

@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const talkToAdvisorController_1 = require("../controllers/talkToAdvisorController");
+const router = (0, express_1.Router)();
+router.post("/", talkToAdvisorController_1.createTalkToAdvisor);
+router.get("/", talkToAdvisorController_1.getAllTalkToAdvisors);
+router.get("/:id", talkToAdvisorController_1.getTalkToAdvisor);
+router.put("/:id", talkToAdvisorController_1.updateTalkToAdvisor);
+router.delete("/:id", talkToAdvisorController_1.deleteTalkToAdvisor);
+exports.default = router;

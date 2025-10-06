@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const uploadMiddleware_1 = require("../middleware/uploadMiddleware");
+const talkToAstrologerController_1 = require("../controllers/talkToAstrologerController");
+const router = (0, express_1.Router)();
+router.post("/", uploadMiddleware_1.upload.single("file"), talkToAstrologerController_1.createTalkToAstrologer);
+router.get("/", talkToAstrologerController_1.getTalkToAstrologerAll);
+router.get("/:id", talkToAstrologerController_1.getTalkToAstrologerById);
+router.delete("/:id", talkToAstrologerController_1.deleteTalkToAstrologer);
+router.put("/:id", talkToAstrologerController_1.updateTalkToAstrologer);
+router.patch("/:id/toggle-service", talkToAstrologerController_1.toggleService);
+router.patch("/:id/online-status", talkToAstrologerController_1.setOnlineStatus);
+router.patch("/:id/schedule-service", talkToAstrologerController_1.updateSchedule);
+router.post("/:astrologerId/reviews", talkToAstrologerController_1.addReview);
+router.get("/:astrologerId/reviews", talkToAstrologerController_1.getReviews);
+exports.default = router;

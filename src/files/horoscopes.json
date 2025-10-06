@@ -1,0 +1,98 @@
+[
+  {
+    "sign": "aries",
+    "date": "2035-10-06",
+    "content": "Aries, unexpected opportunities may come your way. Stay flexible and open-minded.",
+    "mood": "excited",
+    "luckyNumber": 5,
+    "luckyColor": "Scarlet"
+  },
+  {
+    "sign": "taurus",
+    "date": "2035-10-06",
+    "content": "Taurus, financial stability is highlighted today. Avoid impulsive spending.",
+    "mood": "grounded",
+    "luckyNumber": 2,
+    "luckyColor": "Forest Green"
+  },
+  {
+    "sign": "gemini",
+    "date": "2035-10-06",
+    "content": "Gemini, your curiosity leads to new learning experiences. Share your thoughts freely.",
+    "mood": "curious",
+    "luckyNumber": 8,
+    "luckyColor": "Light Blue"
+  },
+  {
+    "sign": "cancer",
+    "date": "2035-10-06",
+    "content": "Cancer, family and close relationships need your attention. Show your care through actions.",
+    "mood": "caring",
+    "luckyNumber": 6,
+    "luckyColor": "White"
+  },
+  {
+    "sign": "leo",
+    "date": "2035-10-06",
+    "content": "Leo, your leadership will be noticed today. Inspire others with your confidence.",
+    "mood": "influential",
+    "luckyNumber": 9,
+    "luckyColor": "Orange"
+  },
+  {
+    "sign": "virgo",
+    "date": "2035-10-06",
+    "content": "Virgo, productivity is high today. Organize tasks and you will achieve more than expected.",
+    "mood": "efficient",
+    "luckyNumber": 4,
+    "luckyColor": "Beige"
+  },
+  {
+    "sign": "libra",
+    "date": "2035-10-06",
+    "content": "Libra, harmony surrounds you today. It’s a good time to resolve old disputes.",
+    "mood": "peaceful",
+    "luckyNumber": 7,
+    "luckyColor": "Lavender"
+  },
+  {
+    "sign": "scorpio",
+    "date": "2035-10-06",
+    "content": "Scorpio, passion fuels your ambitions. Use your focus to move closer to your goals.",
+    "mood": "driven",
+    "luckyNumber": 11,
+    "luckyColor": "Dark Red"
+  },
+  {
+    "sign": "sagittarius",
+    "date": "2035-10-06",
+    "content": "Sagittarius, travel or new connections may bring exciting opportunities.",
+    "mood": "adventurous",
+    "luckyNumber": 3,
+    "luckyColor": "Teal"
+  },
+  {
+    "sign": "capricorn",
+    "date": "2035-10-06",
+    "content": "Capricorn, persistence is your strength. Keep pushing toward long-term success.",
+    "mood": "resilient",
+    "luckyNumber": 10,
+    "luckyColor": "Brown"
+  },
+  {
+    "sign": "aquarius",
+    "date": "2035-10-06",
+    "content": "Aquarius, your originality inspires those around you. Don’t be afraid to stand out.",
+    "mood": "unique",
+    "luckyNumber": 1,
+    "luckyColor": "Sky Blue"
+  },
+  {
+    "sign": "pisces",
+    "date": "2035-10-06",
+    "content": "Pisces, creativity flows through you today. Express yourself through art or writing.",
+    "mood": "artistic",
+    "luckyNumber": 12,
+    "luckyColor": "Aqua"
+  }
+]

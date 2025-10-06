@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const tokenController_1 = require("../controllers/tokenController");
+const router = (0, express_1.Router)();
+router.post("/", tokenController_1.createToken);
+router.get("/", tokenController_1.getAllTokens);
+router.get("/:id", tokenController_1.getToken);
+router.put("/:id", tokenController_1.updateToken);
+router.delete("/:id", tokenController_1.deleteToken);
+exports.default = router;

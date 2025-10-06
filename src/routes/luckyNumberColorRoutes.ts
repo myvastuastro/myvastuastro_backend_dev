@@ -1,0 +1,10 @@
+import { Router } from "express";
+import {createLuckyNumberColor,getAllLuckyNumberColors, getLuckyNumberColor,  searchLuckyNumberColor, updateLuckyNumberColor, deleteLuckyNumberColor} from "../controllers/luckuNumberColorController";
+const router = Router();
+router.post("/", createLuckyNumberColor);
+router.get("/", getAllLuckyNumberColors);
+router.get("/:id", getLuckyNumberColor);
+router.get("/search/query", searchLuckyNumberColor);
+router.put("/:id", updateLuckyNumberColor);
+router.delete("/:id", deleteLuckyNumberColor);
+export default router;

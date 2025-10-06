@@ -1,0 +1,10 @@
+import { Router } from "express";
+import {createVastuAstrologer,getAllVastuAstrologers, getVastuAstrologer, updateVastuAstrologer, deleteVastuAstrologer} from "../controllers/vastuAstrologerController";
+const router = Router();
+import { upload } from '../middleware/uploadMiddleware';
+router.post("/", upload.single("image"), createVastuAstrologer);
+router.get("/", getAllVastuAstrologers);
+router.get("/:id", getVastuAstrologer);
+router.put("/:id", upload.single("image"), updateVastuAstrologer);
+router.delete("/:id", deleteVastuAstrologer);
+export default router;

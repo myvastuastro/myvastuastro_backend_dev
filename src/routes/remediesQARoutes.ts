@@ -1,0 +1,10 @@
+import { Router } from "express";
+import {createRemediesQA,getAllRemediesQAs, getRemediesQAByUserId, getRemediesQAById , updateRemediesQA, deleteRemediesQA} from "../controllers/remediesQAController";
+const router = Router();
+router.post("/", createRemediesQA);
+router.get("/", getAllRemediesQAs);
+router.get("/:id", getRemediesQAById);
+router.get("/:userId", getRemediesQAByUserId);
+router.put("/:id", updateRemediesQA);
+router.delete("/:id", deleteRemediesQA);
+export default router;

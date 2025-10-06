@@ -1,0 +1,59 @@
+{
+  "name": "myvastuastro_backend",
+  "version": "1.0.0",
+  "description": "MyVastuAstro backend API",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "migrate:country": "ts-node src/scripts/migrateColumn.ts",
+    "migrate:address": "ts-node src/scripts/migrateUser.ts",
+    "migrate:astrologer": "ts-node src/scripts/migrateAstrologer.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myvastuastro/myvastuastro_backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "astronomy-engine": "^2.1.19",
+    "axios": "^1.9.0",
+    "body-parser": "^2.2.0",
+    "cloudinary": "^1.41.3",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.19.2",
+    "firebase-admin": "^13.4.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.14.1",
+    "multer": "^1.4.5-lts.2",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemailer": "^7.0.3",
+    "otp-generator": "^4.0.1",
+    "razorpay": "^2.9.6",
+    "reflect-metadata": "^0.2.1",
+    "request": "^2.88.2",
+    "socket.io": "^4.8.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/multer": "^1.4.12",
+    "@types/multer-s3": "^3.0.3",
+    "@types/node": "^20.11.30",
+    "@types/nodemailer": "^6.4.17",
+    "@types/otp-generator": "^4.0.2",
+    "@types/validator": "^13.11.9",
+    "nodemon": "^3.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/myvastuastro/myvastuastro_backend/issues"
+  },
+  "homepage": "https://github.com/myvastuastro/myvastuastro_backend#readme"
+}

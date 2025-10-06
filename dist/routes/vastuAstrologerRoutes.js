@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const vastuAstrologerController_1 = require("../controllers/vastuAstrologerController");
+const router = (0, express_1.Router)();
+const uploadMiddleware_1 = require("../middleware/uploadMiddleware");
+router.post("/", uploadMiddleware_1.upload.single("image"), vastuAstrologerController_1.createVastuAstrologer);
+router.get("/", vastuAstrologerController_1.getAllVastuAstrologers);
+router.get("/:id", vastuAstrologerController_1.getVastuAstrologer);
+router.put("/:id", uploadMiddleware_1.upload.single("image"), vastuAstrologerController_1.updateVastuAstrologer);
+router.delete("/:id", vastuAstrologerController_1.deleteVastuAstrologer);
+exports.default = router;

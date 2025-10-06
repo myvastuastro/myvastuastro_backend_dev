@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const myVastuAstroController_1 = require("../controllers/myVastuAstroController");
+const router = (0, express_1.Router)();
+router.post("/", myVastuAstroController_1.createMyVastuAstro);
+router.get("/", myVastuAstroController_1.getAllMyVastuAstros);
+router.get("/:id", myVastuAstroController_1.getMyVastuAstro);
+router.put("/:id", myVastuAstroController_1.updateMyVastuAstro);
+router.delete("/:id", myVastuAstroController_1.deleteMyVastuAstro);
+exports.default = router;

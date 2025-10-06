@@ -1,0 +1,11 @@
+node_modules
+.serverless
+# Firebase keys
+echo "dist/firebase/firebaseServiceAccountKey.json" >> .gitignore
+echo "src/firebase/firebaseServiceAccountKey.json" >> .gitignoresrc/firebase/firebaseServiceAccountKey.json
+dist/firebase/firebaseServiceAccountKey.json
+src/firebase/firebaseServiceAccountKey.json
+dist/firebase/firebaseServiceAccountKey.json
+git add .gitignore
+git commit -m "Added firebase key files to .gitignore"
+git push origin main

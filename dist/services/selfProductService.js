@@ -12,9 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SelfProductService = void 0;
 const selfProductRepository_1 = require("../repo/selfProductRepository");
 class SelfProductService {
-    static uploadProduct(product) {
+    static uploadProduct(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            return selfProductRepository_1.selfProductRepository.createProduct(product);
+            return selfProductRepository_1.selfProductRepository.createOrUpdateProduct(data);
         });
     }
     static listProducts() {

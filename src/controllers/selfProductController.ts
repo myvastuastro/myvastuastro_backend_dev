@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { SelfProductService } from "../services/selfProductService";
 
 
+
 export async function uploadSelfProductController(req: Request, res: Response) {
   try {
     const { userId, productName } = req.body;
@@ -10,30 +11,32 @@ export async function uploadSelfProductController(req: Request, res: Response) {
     if (!file) return res.status(400).json({ message: 'File is required', status: 'fail' });
     if (!file.size) return res.status(400).json({ message: 'Uploaded file is empty', status: 'fail' });
 
-    // Optional: validate MIME type
     const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
     if (!allowedTypes.includes(file.mimetype)) {
       return res.status(400).json({ message: 'Invalid file type', status: 'fail' });
     }
 
-    const fileUrl = file.path;
-    const downloadUrl = fileUrl.replace("/upload/", "/upload/fl_attachment/"); // optional
+    const fileUrl = (file as any).path;
+    const downloadUrl = fileUrl.replace("/upload/", "/upload/fl_attachment/");
+    const resourceType = (file as any).resource_type;
 
-    const product = await SelfProductService.uploadProduct({ userId, productName, fileUrl });
-
-    if (!product) {
-      return res.status(400).json({ message: 'Upload failed', status: 'fail' });
-    }
+    const product = await SelfProductService.uploadProduct({
+      userId,
+      productName,
+      fileUrl,
+      originalName: file.originalname,
+      mimeType: file.mimetype,
+      resourceType
+    });
 
     res.status(200).json({
       message: 'File uploaded successfully',
-      data: { ...product, downloadUrl },
+      data: { ...product.toObject(), downloadUrl },
       status: 'success'
     });
 
   } catch (error) {
     console.error('Upload error:', error);
-
     if (!res.headersSent) {
       res.status(500).json({
         message: 'Server error during upload',
@@ -43,6 +46,48 @@ export async function uploadSelfProductController(req: Request, res: Response) {
     }
   }
 }
+
+// export async function uploadSelfProductController(req: Request, res: Response) {
+//   try {
+//     const { userId, productName } = req.body;
+//     const file = req.file as Express.Multer.File;
+
+//     if (!file) return res.status(400).json({ message: 'File is required', status: 'fail' });
+//     if (!file.size) return res.status(400).json({ message: 'Uploaded file is empty', status: 'fail' });
+
+//     // Optional: validate MIME type
+//     const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
+//     if (!allowedTypes.includes(file.mimetype)) {
+//       return res.status(400).json({ message: 'Invalid file type', status: 'fail' });
+//     }
+
+//     const fileUrl = file.path;
+//     const downloadUrl = fileUrl.replace("/upload/", "/upload/fl_attachment/"); // optional
+
+//     const product = await SelfProductService.uploadProduct({ userId, productName, fileUrl });
+
+//     if (!product) {
+//       return res.status(400).json({ message: 'Upload failed', status: 'fail' });
+//     }
+
+//     res.status(200).json({
+//       message: 'File uploaded successfully',
+//       data: { ...product, downloadUrl },
+//       status: 'success'
+//     });
+
+//   } catch (error) {
+//     console.error('Upload error:', error);
+
+//     if (!res.headersSent) {
+//       res.status(500).json({
+//         message: 'Server error during upload',
+//         status: 'fail',
+//         error: error instanceof Error ? error.message : error
+//       });
+//     }
+//   }
+// }
 
 
 // export async function uploadSelfProductController(req: Request, res: Response) {

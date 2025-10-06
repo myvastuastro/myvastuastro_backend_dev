@@ -2,8 +2,15 @@ import { selfProductRepository } from "../repo/selfProductRepository";
 
 export class SelfProductService {
 
-  static async uploadProduct(product: any): Promise<any> {
-    return selfProductRepository.createProduct(product);
+    static async uploadProduct(data: {
+    userId: string;
+    productName: string;
+    fileUrl: string;
+    originalName: string;
+    mimeType: string;
+    resourceType: string;
+  }): Promise<any> {
+    return selfProductRepository.createOrUpdateProduct(data);
   }
 
 

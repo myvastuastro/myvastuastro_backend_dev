@@ -26,25 +26,48 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.selfProductRepository = void 0;
 const selfProduct_1 = __importDefault(require("../models/selfProduct"));
 class selfProductRepository {
-    static createProduct(data) {
+    static createOrUpdateProduct(data) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { userId, productName } = data, rest = __rest(data, ["userId", "productName"]);
+                // Check if product already exists
                 const existingProduct = yield selfProduct_1.default.findOne({ userId, productName });
                 if (existingProduct) {
-                    return yield selfProduct_1.default.findOneAndUpdate({ userId, productName }, { $set: rest }, { new: true });
+                    // Update existing product with new data
+                    return yield selfProduct_1.default.findOneAndUpdate({ userId, productName }, { $set: rest }, { new: true } // return updated document
+                    );
                 }
                 else {
+                    // Create new product
                     const product = new selfProduct_1.default(data);
                     return yield product.save();
                 }
             }
             catch (error) {
-                console.error('Error creating user:', error);
+                console.error("Error creating/updating product:", error);
                 throw error;
             }
         });
     }
+    // static async createProduct(data: Partial<any>): Promise<any> {
+    //   try {
+    //     const { userId, productName, ...rest } = data;
+    //     const existingProduct = await Product.findOne({ userId, productName });
+    //     if (existingProduct) {
+    //       return await Product.findOneAndUpdate(
+    //         { userId, productName },
+    //         { $set: rest },
+    //         { new: true }
+    //       );
+    //     } else {
+    //       const product = new Product(data);
+    //       return await product.save();
+    //     }
+    //   } catch (error) {
+    //     console.error('Error creating user:', error);
+    //     throw error;
+    //   }
+    // }
     static getAllProducts() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield selfProduct_1.default.find({});

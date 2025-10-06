@@ -21,42 +21,34 @@ function uploadSelfProductController(req, res) {
         try {
             const { userId, productName } = req.body;
             const file = req.file;
-            if (!file) {
-                res.status(400).json({ message: 'File is required', status: 'fail' });
-                return;
-            }
-            const fileSize = file.size || 0;
-            if (fileSize === 0) {
-                res.status(400).json({ message: 'Uploaded file is empty', status: 'fail' });
-                return;
+            if (!file)
+                return res.status(400).json({ message: 'File is required', status: 'fail' });
+            if (!file.size)
+                return res.status(400).json({ message: 'Uploaded file is empty', status: 'fail' });
+            // Optional: validate MIME type
+            const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
+            if (!allowedTypes.includes(file.mimetype)) {
+                return res.status(400).json({ message: 'Invalid file type', status: 'fail' });
             }
             const fileUrl = file.path;
+            const downloadUrl = fileUrl.replace("/upload/", "/upload/fl_attachment/"); // optional
             const product = yield selfProductService_1.SelfProductService.uploadProduct({ userId, productName, fileUrl });
-            if (product) {
-                res.status(200).json({
-                    message: 'File uploaded successfully',
-                    data: product,
-                    status: 'success',
-                    statusCode: 200
-                });
+            if (!product) {
+                return res.status(400).json({ message: 'Upload failed', status: 'fail' });
             }
-            else {
-                res.status(400).json({
-                    message: 'Upload failed',
-                    status: 'fail',
-                    statusCode: 400
-                });
-            }
+            res.status(200).json({
+                message: 'File uploaded successfully',
+                data: Object.assign(Object.assign({}, product), { downloadUrl }),
+                status: 'success'
+            });
         }
         catch (error) {
             console.error('Upload error:', error);
-            // ✅ Prevent double-send
             if (!res.headersSent) {
                 res.status(500).json({
                     message: 'Server error during upload',
                     status: 'fail',
-                    statusCode: 500,
-                    error
+                    error: error instanceof Error ? error.message : error
                 });
             }
         }
@@ -65,15 +57,15 @@ function uploadSelfProductController(req, res) {
 // export async function uploadSelfProductController(req: Request, res: Response) {
 //   try {
 //     const { userId, productName } = req.body;
-//     const files = req.files as {
-//       [fieldname: string]: Express.Multer.File[];
-//     };
-//     const file = files?.file?.[0];
+//     const file = req.file as Express.Multer.File;
 //     if (!file) {
-//        res.status(400).json({ message: "File is required" }); // ✅ return added
+//        res.status(400).json({ message: 'File is required', status: 'fail' });
+//        return;
 //     }
-//     if (file.size === 0) {
-//        res.status(400).json({ message: "Uploaded file is empty", status: "fail" }); // ✅ return added
+//     const fileSize = file.size || 0;
+//     if (fileSize === 0) {
+//        res.status(400).json({ message: 'Uploaded file is empty', status: 'fail' });
+//        return;
 //     }
 //     const fileUrl = file.path;
 //     const product = await SelfProductService.uploadProduct({ userId, productName, fileUrl });
@@ -81,52 +73,29 @@ function uploadSelfProductController(req, res) {
 //        res.status(200).json({
 //         message: 'File uploaded successfully',
 //         data: product,
-//         status: "success",
+//         status: 'success',
 //         statusCode: 200
 //       });
 //     } else {
 //        res.status(400).json({
-//         message: 'Failed',
-//         status: "fail",
-//         statusCode: 400,
-//         data: product
+//         message: 'Upload failed',
+//         status: 'fail',
+//         statusCode: 400
 //       });
 //     }
 //   } catch (error) {
-//     console.error("Upload error:", error);
-//      res.status(400).json({
-//       message: 'Error uploading product',
-//       status: "fail",
-//       statusCode: 400,
-//       data: error
-//     });
+//     console.error('Upload error:', error);
+//     // ✅ Prevent double-send
+//     if (!res.headersSent) {
+//        res.status(500).json({
+//         message: 'Server error during upload',
+//         status: 'fail',
+//         statusCode: 500,
+//         error
+//       });
+//     }
 //   }
 // }
-// export async function  uploadSelfProductController(req: Request, res: Response){
-//   try {
-//     const { userId, productName } = req.body;
-//     const files = req.files as {
-//         [fieldname: string]: Express.MulterS3.File[];
-//     };
-//     const file = files?.file?.[0];
-//      if (!file) {
-//        res.status(400).json({ message: "File is required" });
-//     }
-//     // ✅ OPTIONAL VALIDATION
-//     if (file.size === 0) {
-//        res.status(400).json({ message: "Uploaded file is empty", status: "fail" });
-//     }
-//     const fileUrl = file.location;
-//     const product = await SelfProductService.uploadProduct({ userId, productName, fileUrl });
-//      if (product) {
-//       res.status(200).json({ message: 'file uploaded successful', data: product, status: "success", statusCode: 200 });
-//   } else {
-//       res.status(400).json({ message: 'Failed', status: "fail", statusCode: 400, data: product });
-//   }
-//   } catch (error) {
-//      res.status(400).json({ message: 'Error uploading product', status: "fail", statusCode: 400, data: error });
-//   }
-// };
 function getAllSelfProductsController(_req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {

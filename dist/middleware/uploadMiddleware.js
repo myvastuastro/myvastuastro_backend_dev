@@ -21,19 +21,9 @@ const storage = new multer_storage_cloudinary_1.CloudinaryStorage({
     params: (_req, file) => __awaiter(void 0, void 0, void 0, function* () {
         var _a;
         const ext = (_a = file.originalname.split('.').pop()) === null || _a === void 0 ? void 0 : _a.toLowerCase();
-        let resourceType = 'image';
-        if (['pdf', 'doc', 'docx', 'txt'].includes(ext || '')) {
-            resourceType = 'raw';
-        }
-        else if (['mp3', 'wav', 'aac', 'm4a', 'mp4', 'mov'].includes(ext || '')) {
-            resourceType = 'video';
-        }
-        else {
-            resourceType = 'auto'; // handles images automatically
-        }
         return {
             folder: 'myvastuastro_storage',
-            resource_type: resourceType,
+            resource_type: "auto", // <-- key fix
             public_id: `${Date.now()}-${file.originalname.split('.')[0]}`,
             format: ext,
             use_filename: true,

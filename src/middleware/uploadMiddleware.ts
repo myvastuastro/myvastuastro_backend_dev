@@ -6,13 +6,13 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: async (_req, file) => {
     const ext = file.originalname.split('.').pop()?.toLowerCase();
-    let resourceType: 'image' | 'raw' = 'image';
-    if (ext === 'pdf' || ext === 'doc' || ext === 'docx') {
-      resourceType = 'raw';
-    }
+    // let resourceType: 'image' | 'raw' = 'image';
+    // if (ext === 'pdf' || ext === 'doc' || ext === 'docx') {
+    //   resourceType = 'raw';
+    // }
     return {
       folder: 'myvastuastro_storage',
-      resource_type: resourceType, // <-- key fix
+      resource_type: "auto", // <-- key fix
       public_id: `${Date.now()}-${file.originalname.split('.')[0]}`,
       format: ext,
       use_filename: true,

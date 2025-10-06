@@ -27,7 +27,7 @@ const storage = new multer_storage_cloudinary_1.CloudinaryStorage({
         // }
         return {
             folder: 'myvastuastro_storage',
-            resource_type: "auto", // <-- key fix
+            resource_type: ext === 'pdf' ? 'raw' : 'auto', // PDFs as raw
             public_id: `${Date.now()}-${file.originalname.split('.')[0]}`,
             format: ext,
             use_filename: true,

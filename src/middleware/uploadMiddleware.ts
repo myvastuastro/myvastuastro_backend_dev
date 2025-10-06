@@ -12,7 +12,7 @@ const storage = new CloudinaryStorage({
     // }
     return {
       folder: 'myvastuastro_storage',
-      resource_type: "auto", // <-- key fix
+      resource_type: ext === 'pdf' ? 'raw' : 'auto', // PDFs as raw
       public_id: `${Date.now()}-${file.originalname.split('.')[0]}`,
       format: ext,
       use_filename: true,

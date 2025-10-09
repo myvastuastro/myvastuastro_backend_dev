@@ -52,5 +52,15 @@ class AskQuestionRepository {
             return yield askQuestion_1.default.find();
         });
     }
+    static answerQuestionVastu(id, answer, vastuAstrologerId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield askQuestion_1.default.findByIdAndUpdate(id, {
+                answer,
+                vastuAstrologerId,
+                status: "answered",
+            }, { new: true } // return updated document
+            );
+        });
+    }
 }
 exports.AskQuestionRepository = AskQuestionRepository;

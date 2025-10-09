@@ -37,4 +37,16 @@ export class AskQuestionRepository {
     static async getAllAskQuestions(): Promise<any[]> {
         return await AskQuestion.find();
     }
+
+    static async answerQuestionVastu(id: string, answer: string, vastuAstrologerId: string): Promise<any | null> {
+    return await AskQuestion.findByIdAndUpdate(
+      id,
+      {
+        answer,
+        vastuAstrologerId,
+        status: "answered",
+      },
+      { new: true } // return updated document
+    );
+  }
 }

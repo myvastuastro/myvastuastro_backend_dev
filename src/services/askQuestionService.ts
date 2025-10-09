@@ -46,6 +46,15 @@ export class AskQuestionService {
         }
     }
 
+    
+        static async answerQuestionVastu(id: string, answer: string, vastuAstrologerId: string): Promise<any | null> {
+            try {
+                return await AskQuestionRepository.answerQuestionVastu(id, answer, vastuAstrologerId);
+            } catch (error) {
+                throw new Error("Could not answer question");
+            }
+        }
+
 
 
 }

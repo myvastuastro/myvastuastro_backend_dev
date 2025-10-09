@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const questionSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Types.ObjectId,
-    ref: "user", 
+    ref: "user",
     required: false
   },
   name: {
@@ -17,11 +17,13 @@ const questionSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  message:{
+  question: {
     type: String,
     required: true
-  }
-
+  },
+  status: { type: String, enum: ["pending", "answered", "in_progress"], default: "pending" },
+  vastuAstrologerId: { type: String, default: null },
+  answer: { type: String, default: null },
 }, {
   timestamps: true
 });

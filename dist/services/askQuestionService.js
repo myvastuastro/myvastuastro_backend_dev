@@ -63,5 +63,15 @@ class AskQuestionService {
             }
         });
     }
+    static answerQuestionVastu(id, answer, vastuAstrologerId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield askQuestionRepository_1.AskQuestionRepository.answerQuestionVastu(id, answer, vastuAstrologerId);
+            }
+            catch (error) {
+                throw new Error("Could not answer question");
+            }
+        });
+    }
 }
 exports.AskQuestionService = AskQuestionService;

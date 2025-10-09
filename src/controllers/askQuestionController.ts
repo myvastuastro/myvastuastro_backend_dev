@@ -72,3 +72,18 @@ export async function getAllAskQuestions(req: Request, res: Response): Promise<v
     }
 }
 
+// ✅ Answer (Astrologer updates)
+export const answerQuestionVastu = async (req: Request, res: Response) => {
+    try {
+        const { answer, vastuAstrologerId } = req.body;
+        const updated = await AskQuestionService.answerQuestionVastu(req.params.id, answer, vastuAstrologerId);
+
+        if (!updated) {
+            return res.status(404).json({ success: false, message: "Question not found" });
+        }
+        return res.json({ success: true, data: updated });
+    } catch (err: any) {
+        return res.status(500).json({ success: false, message: err.message });
+    }
+};
+

@@ -22,10 +22,13 @@ const questionSchema = new mongoose_1.default.Schema({
         type: Number,
         required: true
     },
-    message: {
+    question: {
         type: String,
         required: true
-    }
+    },
+    status: { type: String, enum: ["pending", "answered", "in_progress"], default: "pending" },
+    vastuAstrologerId: { type: String, default: null },
+    answer: { type: String, default: null },
 }, {
     timestamps: true
 });

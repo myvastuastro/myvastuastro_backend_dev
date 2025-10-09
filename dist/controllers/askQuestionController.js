@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.answerQuestionVastu = void 0;
 exports.createAskQuestion = createAskQuestion;
 exports.getAskQuestion = getAskQuestion;
 exports.updateAskQuestion = updateAskQuestion;
@@ -98,3 +99,18 @@ function getAllAskQuestions(req, res) {
         }
     });
 }
+// ✅ Answer (Astrologer updates)
+const answerQuestionVastu = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { answer, vastuAstrologerId } = req.body;
+        const updated = yield askQuestionService_1.AskQuestionService.answerQuestionVastu(req.params.id, answer, vastuAstrologerId);
+        if (!updated) {
+            return res.status(404).json({ success: false, message: "Question not found" });
+        }
+        return res.json({ success: true, data: updated });
+    }
+    catch (err) {
+        return res.status(500).json({ success: false, message: err.message });
+    }
+});
+exports.answerQuestionVastu = answerQuestionVastu;

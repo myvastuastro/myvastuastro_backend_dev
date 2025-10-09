@@ -8,4 +8,5 @@ router.get("/", askQuestionController_1.getAllAskQuestions);
 router.get("/:userId", askQuestionController_1.getAskQuestion);
 router.put("/:id", askQuestionController_1.updateAskQuestion);
 router.delete("/:id", askQuestionController_1.deleteAskQuestion);
+router.put("/:id/answer", askQuestionController_1.answerQuestionVastu);
 exports.default = router;

@@ -5,6 +5,11 @@ const comprehensiveSchema = new mongoose.Schema({
     ref: "user",
     required: false
   },
+   professionalId: {
+    type: mongoose.Types.ObjectId,
+    ref: "vastuProfessional",
+    required: false
+  },
   vastuAstrologerId: {
     type: mongoose.Types.ObjectId,
     ref: "user",

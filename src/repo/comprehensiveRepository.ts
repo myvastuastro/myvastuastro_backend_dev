@@ -6,6 +6,7 @@ export class ComprehensiveRepository {
               userId,
               vastuAstrologerId,
               comprehensive,
+              professionalId
               } = data;
         
               const parsedAvailability = typeof comprehensive === 'string'
@@ -16,6 +17,7 @@ export class ComprehensiveRepository {
                 userId,
                 vastuAstrologerId,
                 comprehensive: parsedAvailability,
+                professionalId
               });
             return newComprehensive;
 
@@ -52,6 +54,7 @@ export class ComprehensiveRepository {
     }
 
     static async getAllComprehensives(): Promise<any[]> {
-        return await Comprehensive.find();
+        return await Comprehensive.find().populate('userId')
+  .populate('vastuAstrologerId').populate('professionalId');
     }
 }

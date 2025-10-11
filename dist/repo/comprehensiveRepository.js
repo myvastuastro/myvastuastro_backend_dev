@@ -18,7 +18,7 @@ class ComprehensiveRepository {
     static createComprehensive(data) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { userId, vastuAstrologerId, comprehensive, } = data;
+                const { userId, vastuAstrologerId, comprehensive, professionalId } = data;
                 const parsedAvailability = typeof comprehensive === 'string'
                     ? JSON.parse(comprehensive)
                     : comprehensive;
@@ -26,6 +26,7 @@ class ComprehensiveRepository {
                     userId,
                     vastuAstrologerId,
                     comprehensive: parsedAvailability,
+                    professionalId
                 });
                 return newComprehensive;
             }
@@ -62,7 +63,8 @@ class ComprehensiveRepository {
     }
     static getAllComprehensives() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield comprehensiveModel_1.default.find();
+            return yield comprehensiveModel_1.default.find().populate('userId')
+                .populate('vastuAstrologerId').populate('professionalId');
         });
     }
 }

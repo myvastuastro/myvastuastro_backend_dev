@@ -1,11 +1,11 @@
 // services/contactService.ts
 
-import { ComprehensiveRepository } from '../repo/comprehensiveFreeCallRepository';
+import { ComprehensiveFreeCallRepository } from '../repo/comprehensiveFreeCallRepository';
 
-export class ComprehensiveService {
+export class ComprehensiveFreeCallService {
     static async createComprehensive(data: any): Promise<any> {
         try {
-            const create = await ComprehensiveRepository.createComprehensive(data);
+            const create = await ComprehensiveFreeCallRepository.createComprehensive(data);
             return create;
 
 
@@ -17,7 +17,7 @@ export class ComprehensiveService {
 
     static async getById(id: string): Promise<any> {
         try {
-            return await ComprehensiveRepository.getComprehensiveById(id);
+            return await ComprehensiveFreeCallRepository.getComprehensiveById(id);
         } catch (error) {
             throw new Error('Could not get contact');
         }
@@ -25,7 +25,7 @@ export class ComprehensiveService {
 
     static async updateComprehensive(id: string, data: any): Promise<any> {
         try {
-            return await ComprehensiveRepository.updateComprehensive(id, data);
+            return await ComprehensiveFreeCallRepository.updateComprehensive(id, data);
         } catch (error) {
             throw new Error('Could not update contact');
         }
@@ -33,7 +33,7 @@ export class ComprehensiveService {
 
     static async deleteComprehensive(id: string): Promise<any> {
         try {
-            return await ComprehensiveRepository.deleteComprehensive(id);
+            return await ComprehensiveFreeCallRepository.deleteComprehensive(id);
         } catch (error) {
             throw new Error('Could not delete contact');
         }
@@ -41,7 +41,7 @@ export class ComprehensiveService {
 
     static async getAll(): Promise<any> {
         try {
-            return await ComprehensiveRepository.getAllComprehensives();
+            return await ComprehensiveFreeCallRepository.getAllComprehensives();
         } catch (error) {
             throw new Error('Could not get contacts');
         }

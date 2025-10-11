@@ -32,7 +32,18 @@ const comprehensivefreeCallSchema = new mongoose_1.default.Schema({
                 }
             ]
         }
-    ]
+    ],
+    status: {
+        type: String,
+        enum: ["pending", "attended", "missed", "rescheduled"],
+        default: "pending",
+    },
+    // optional notes astrologer can add later
+    astrologerNotes: {
+        type: String,
+        required: false,
+        default: "",
+    },
 }, {
     timestamps: true
 });

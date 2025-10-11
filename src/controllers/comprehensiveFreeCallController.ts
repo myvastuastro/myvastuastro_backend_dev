@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { ComprehensiveService } from '../services/comprehensiveService';
+import { ComprehensiveFreeCallService } from '../services/comprehensiveFreeCallService';
 export async function createComprehensive(req: Request, res: Response): Promise<void> {
     try {
-        const comprehensive = await ComprehensiveService.createComprehensive(req.body);
+        const comprehensive = await ComprehensiveFreeCallService.createComprehensive(req.body);
         if (comprehensive) {
             res.status(200).json({ message: 'Submit successful', data: comprehensive, status: "success", statusCode: 200 });
         } else {
@@ -17,7 +17,7 @@ export async function createComprehensive(req: Request, res: Response): Promise<
 export async function getComprehensive(req: Request, res: Response): Promise<void> {
     try {
         const { id } = req.params;
-        const comprehensive = await ComprehensiveService.getById(id);
+        const comprehensive = await ComprehensiveFreeCallService.getById(id);
         if (comprehensive) {
             res.status(200).json({ message: 'Find successful', data: comprehensive, status: "success", statusCode: 200 });
         } else {
@@ -35,7 +35,7 @@ export async function updateComprehensive(req: Request, res: Response): Promise<
         const { id } = req.params;
      
        
-        const comprehensive = await ComprehensiveService.updateComprehensive(id, req.body);
+        const comprehensive = await ComprehensiveFreeCallService.updateComprehensive(id, req.body);
         if (comprehensive) {
             res.status(200).json({ message: 'Update successful', data: comprehensive, status: "success", statusCode: 200 });
         } else {
@@ -50,7 +50,7 @@ export async function updateComprehensive(req: Request, res: Response): Promise<
 export async function deleteComprehensive(req: Request, res: Response): Promise<void> {
     try {
         const { id } = req.params;
-        const comprehensive = await ComprehensiveService.deleteComprehensive(id);
+        const comprehensive = await ComprehensiveFreeCallService.deleteComprehensive(id);
         if (comprehensive) {
             res.status(200).json({ message: 'Delete successful', data: comprehensive, status: "success", statusCode: 200 });
         } else {
@@ -63,7 +63,7 @@ export async function deleteComprehensive(req: Request, res: Response): Promise<
 
 export async function getAllComprehensives(req: Request, res: Response): Promise<void> {
     try {
-        const comprehensive = await ComprehensiveService.getAll();
+        const comprehensive = await ComprehensiveFreeCallService.getAll();
         if (comprehensive) {
             res.status(200).json({ message: 'Find successful', data: comprehensive, status: "success", statusCode: 200 });
         } else {

@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const comprehensiveController_1 = require("../controllers/comprehensiveController");
+const comprehensiveFreeCallController_1 = require("../controllers/comprehensiveFreeCallController");
 const router = (0, express_1.Router)();
-router.post("/freecall/", comprehensiveController_1.createComprehensive);
-router.get("/freecall", comprehensiveController_1.getAllComprehensives);
-router.get("/freecall/:id", comprehensiveController_1.getComprehensive);
-router.put("/freecall/:id", comprehensiveController_1.updateComprehensive);
-router.delete("/freecall/:id", comprehensiveController_1.deleteComprehensive);
+router.post("/freecall/", comprehensiveFreeCallController_1.createComprehensive);
+router.get("/freecall", comprehensiveFreeCallController_1.getAllComprehensives);
+router.get("/freecall/:id", comprehensiveFreeCallController_1.getComprehensive);
+router.put("/freecall/:id", comprehensiveFreeCallController_1.updateComprehensive);
+router.delete("/freecall/:id", comprehensiveFreeCallController_1.deleteComprehensive);
 exports.default = router;

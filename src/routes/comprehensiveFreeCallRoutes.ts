@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {createComprehensive,getAllComprehensives, getComprehensive, updateComprehensive, deleteComprehensive} from "../controllers/comprehensiveController";
+import {createComprehensive,getAllComprehensives, getComprehensive, updateComprehensive, deleteComprehensive} from "../controllers/comprehensiveFreeCallController";
 const router = Router();
 router.post("/freecall/",  createComprehensive);
 router.get("/freecall", getAllComprehensives);

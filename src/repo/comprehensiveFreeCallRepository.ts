@@ -1,12 +1,14 @@
 import ComprehensiveFreeCall from '../models/comprehensiveFreeCallModel';
-export class ComprehensiveRepository {
+export class ComprehensiveFreeCallRepository {
     static async createComprehensive(data: any): Promise<any> {
         try {
             const {
               userId,
               vastuAstrologerId,
               comprehensive,
-              professionalId
+              professionalId,
+              status,
+              astrologerNotes
               } = data;
         
               const parsedAvailability = typeof comprehensive === 'string'
@@ -17,7 +19,9 @@ export class ComprehensiveRepository {
                 userId,
                 vastuAstrologerId,
                 comprehensive: parsedAvailability,
-                professionalId
+                professionalId,
+                status,
+                astrologerNotes
               });
             return newComprehensive;
 

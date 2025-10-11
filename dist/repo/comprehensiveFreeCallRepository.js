@@ -12,13 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ComprehensiveRepository = void 0;
+exports.ComprehensiveFreeCallRepository = void 0;
 const comprehensiveFreeCallModel_1 = __importDefault(require("../models/comprehensiveFreeCallModel"));
-class ComprehensiveRepository {
+class ComprehensiveFreeCallRepository {
     static createComprehensive(data) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { userId, vastuAstrologerId, comprehensive, professionalId } = data;
+                const { userId, vastuAstrologerId, comprehensive, professionalId, status, astrologerNotes } = data;
                 const parsedAvailability = typeof comprehensive === 'string'
                     ? JSON.parse(comprehensive)
                     : comprehensive;
@@ -26,7 +26,9 @@ class ComprehensiveRepository {
                     userId,
                     vastuAstrologerId,
                     comprehensive: parsedAvailability,
-                    professionalId
+                    professionalId,
+                    status,
+                    astrologerNotes
                 });
                 return newComprehensive;
             }
@@ -68,4 +70,4 @@ class ComprehensiveRepository {
         });
     }
 }
-exports.ComprehensiveRepository = ComprehensiveRepository;
+exports.ComprehensiveFreeCallRepository = ComprehensiveFreeCallRepository;

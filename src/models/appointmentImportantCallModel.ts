@@ -39,7 +39,18 @@ const appointmentImportantCallSchema = new mongoose.Schema({
         }
       ]
     }
-  ]
+  ],
+   status: {
+      type: String,
+      enum: ["pending", "success", "missed"],
+      default: "pending",
+    },
+
+    astrologerNotes: {
+      type: String,
+      required: false,
+      default: "",
+    },
 
 }, {
   timestamps: true

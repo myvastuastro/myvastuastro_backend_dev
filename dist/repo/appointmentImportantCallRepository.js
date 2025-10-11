@@ -19,7 +19,7 @@ class AppointmentImportantCallRepository {
     static createAppointment(data) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { userId, vastuAstrologerId, name, email, mobile, message, appointment, } = data;
+                const { userId, vastuAstrologerId, name, email, mobile, message, appointment, status, astrologerNotes } = data;
                 const parsedAvailability = typeof appointment === 'string'
                     ? JSON.parse(appointment)
                     : appointment;
@@ -31,6 +31,8 @@ class AppointmentImportantCallRepository {
                     mobile,
                     message,
                     appointment: parsedAvailability,
+                    status,
+                    astrologerNotes
                 });
                 return newAppointment;
             }

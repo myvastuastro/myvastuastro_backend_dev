@@ -13,6 +13,8 @@ export class AppointmentImportantCallRepository {
               mobile,
               message,
               appointment,
+              status,
+              astrologerNotes
               } = data;
         
               const parsedAvailability = typeof appointment === 'string'
@@ -27,6 +29,8 @@ export class AppointmentImportantCallRepository {
                 mobile,
                 message,
                 appointment: parsedAvailability,
+                status,
+                astrologerNotes
               });
             return newAppointment;
 

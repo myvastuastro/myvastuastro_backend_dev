@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const appointmentImportantCallController_1 = require("../controllers/appointmentImportantCallController");
+const router = (0, express_1.Router)();
+router.post("/importantCall/", appointmentImportantCallController_1.createAppointmentImportantCall);
+router.get("/importantCall", appointmentImportantCallController_1.getAllAppointmentsImportantCall);
+router.get("/importantCall/:id", appointmentImportantCallController_1.getAppointmentImportantCall);
+router.put("/importantCall/:id", appointmentImportantCallController_1.updateAppointmentImportantCall);
+router.delete("/importantCall/:id", appointmentImportantCallController_1.deleteAppointmentImportantCall);
+exports.default = router;

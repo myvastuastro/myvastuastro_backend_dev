@@ -1,10 +1,10 @@
 
-import { AskQuestionRepository } from '../repo/askQuestionRepository';
+import { AskQuestionRepository } from '../repo/askQuestionVastuRepository';
 
-export class AskQuestionService {
-    static async createAskQuestion(data: any): Promise<any> {
+export class AskQuestionVastuService {
+    static async createAskQuestionVastu(data: any): Promise<any> {
         try {
-            const create = await AskQuestionRepository.createAskQuestion(data);
+            const create = await AskQuestionRepository.createAskQuestionVastu(data);
             return create;
 
 
@@ -14,33 +14,33 @@ export class AskQuestionService {
     }
 
 
-    static async getById(userId: string): Promise<any> {
+    static async getAskQuestionByUserIdVastu(userId: string): Promise<any> {
         try {
-            return await AskQuestionRepository.getAskQuestionById(userId);
+            return await AskQuestionRepository.getAskQuestionByUserIdVastu(userId);
         } catch (error) {
             throw new Error('Could not get contact');
         }
     }
 
-    static async updateAskQuestion(id: string, data: any): Promise<any> {
+    static async updateAskQuestionVastu(id: string, data: any): Promise<any> {
         try {
-            return await AskQuestionRepository.updateAskQuestion(id, data);
+            return await AskQuestionRepository.updateAskQuestionVastu(id, data);
         } catch (error) {
             throw new Error('Could not update contact');
         }
     }
 
-    static async deleteAskQuestion(id: string): Promise<any> {
+    static async deleteAskQuestionVastu(id: string): Promise<any> {
         try {
-            return await AskQuestionRepository.deleteAskQuestion(id);
+            return await AskQuestionRepository.deleteAskQuestionVastu(id);
         } catch (error) {
             throw new Error('Could not delete contact');
         }
     }
 
-    static async getAll(): Promise<any> {
+    static async getAllAskQuestionsVastu(): Promise<any> {
         try {
-            return await AskQuestionRepository.getAllAskQuestions();
+            return await AskQuestionRepository.getAllAskQuestionsVastu();
         } catch (error) {
             throw new Error('Could not get contacts');
         }

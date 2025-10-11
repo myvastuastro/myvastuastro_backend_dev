@@ -18,7 +18,7 @@ const user_1 = __importDefault(require("../models/user"));
 const PaymentModel_1 = __importDefault(require("../models/PaymentModel"));
 const vastuAstrologer_1 = __importDefault(require("../models/vastuAstrologer"));
 const vastuTip_1 = __importDefault(require("../models/vastuTip"));
-const askQuestion_1 = __importDefault(require("../models/askQuestion"));
+const askQuestionVastu_1 = __importDefault(require("../models/askQuestionVastu"));
 const notificationModel_1 = __importDefault(require("../models/notificationModel")); // Assuming you have a Notification model
 class DashboardRepository {
     static getAllData() {
@@ -28,7 +28,7 @@ class DashboardRepository {
                 PaymentModel_1.default.find({}),
                 vastuAstrologer_1.default.find({}),
                 vastuTip_1.default.find({}),
-                askQuestion_1.default.find({}),
+                askQuestionVastu_1.default.find({}),
                 notificationModel_1.default.find({}) // Fetch notifications
                 // Add any other models you want to fetch data from 
             ]);

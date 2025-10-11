@@ -5,6 +5,11 @@ const professionalSchema = new mongoose.Schema({
     ref: "user", 
     required: false
   },
+   vastuAstrologerId: {
+     type: mongoose.Types.ObjectId,
+     ref: "user",
+     required: false
+   },
   fullName: {
     type: String,
     required: true

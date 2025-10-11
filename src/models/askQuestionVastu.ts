@@ -22,7 +22,11 @@ const questionSchema = new mongoose.Schema({
     required: true
   },
   status: { type: String, enum: ["pending", "answered", "in_progress"], default: "pending" },
-  vastuAstrologerId: { type: String, default: null },
+  vastuAstrologerId: {
+    type: mongoose.Types.ObjectId,
+    ref: "user",
+    required: false
+  },
   answer: { type: String, default: null },
 }, {
   timestamps: true

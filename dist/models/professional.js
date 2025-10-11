@@ -10,6 +10,11 @@ const professionalSchema = new mongoose_1.default.Schema({
         ref: "user",
         required: false
     },
+    vastuAstrologerId: {
+        type: mongoose_1.default.Types.ObjectId,
+        ref: "user",
+        required: false
+    },
     fullName: {
         type: String,
         required: true

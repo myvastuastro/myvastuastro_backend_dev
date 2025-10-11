@@ -1,10 +1,10 @@
 
-import AskQuestion from '../models/askQuestion';
+import AskQuestion from '../models/askQuestionVastu';
 
 export class AskQuestionRepository {
 
 
-    static async createAskQuestion(data: any): Promise<any> {
+    static async createAskQuestionVastu(data: any): Promise<any> {
         try {
           return await AskQuestion.create(data);
         } catch (error) {
@@ -13,11 +13,11 @@ export class AskQuestionRepository {
         }
     }
 
-    static async getAskQuestionById(userId: string): Promise<any | null> {
+    static async getAskQuestionByUserIdVastu(userId: string): Promise<any | null> {
         return await AskQuestion.find({userId: userId});
     }
 
-    static async updateAskQuestion(id: string, data: any): Promise<any> {
+    static async updateAskQuestionVastu(id: string, data: any): Promise<any> {
         try {
           return await AskQuestion.findByIdAndUpdate(
             id,
@@ -30,11 +30,11 @@ export class AskQuestionRepository {
         }
       }
 
-    static async deleteAskQuestion(id: string): Promise<any> {
+    static async deleteAskQuestionVastu(id: string): Promise<any> {
         return await AskQuestion.deleteOne({ _id: id });
     }
 
-    static async getAllAskQuestions(): Promise<any[]> {
+    static async getAllAskQuestionsVastu(): Promise<any[]> {
         return await AskQuestion.find();
     }
 

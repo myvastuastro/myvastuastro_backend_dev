@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const comprehensiveController_1 = require("../controllers/comprehensiveController");
+const router = (0, express_1.Router)();
+router.post("/freecall/", comprehensiveController_1.createComprehensive);
+router.get("/freecall", comprehensiveController_1.getAllComprehensives);
+router.get("/freecall/:id", comprehensiveController_1.getComprehensive);
+router.put("/freecall/:id", comprehensiveController_1.updateComprehensive);
+router.delete("/freecall/:id", comprehensiveController_1.deleteComprehensive);
+exports.default = router;

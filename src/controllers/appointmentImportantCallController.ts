@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { AppointmentService } from '../services/appointmentService';
-export async function createAppointment(req: Request, res: Response): Promise<void> {
+import { AppointmentImportantCallService } from '../services/appointmentImportantCallService';
+export async function createAppointmentImportantCall(req: Request, res: Response): Promise<void> {
     try {
-        const appointment = await AppointmentService.createAppointment(req.body);
+        const appointment = await AppointmentImportantCallService.createAppointment(req.body);
         
         if (appointment) {
             res.status(200).json({ message: 'Submit successful', data: appointment, status: "success", statusCode: 200 });
@@ -15,10 +15,10 @@ export async function createAppointment(req: Request, res: Response): Promise<vo
     }
 }
 
-export async function getAppointment(req: Request, res: Response): Promise<void> {
+export async function getAppointmentImportantCall(req: Request, res: Response): Promise<void> {
     try {
         const { id } = req.params;
-        const appointment = await AppointmentService.getById(id);
+        const appointment = await AppointmentImportantCallService.getById(id);
         if (appointment) {
             res.status(200).json({ message: 'Find successful', data: appointment, status: "success", statusCode: 200 });
         } else {
@@ -31,12 +31,12 @@ export async function getAppointment(req: Request, res: Response): Promise<void>
     }
 }
 
-export async function updateAppointment(req: Request, res: Response): Promise<void> {
+export async function updateAppointmentImportantCall(req: Request, res: Response): Promise<void> {
     try {
         const { id } = req.params;
      
        
-        const appointment = await AppointmentService.updateAppointment(id, req.body);
+        const appointment = await AppointmentImportantCallService.updateAppointment(id, req.body);
         if (appointment) {
             res.status(200).json({ message: 'Update successful', data: appointment, status: "success", statusCode: 200 });
         } else {
@@ -48,10 +48,10 @@ export async function updateAppointment(req: Request, res: Response): Promise<vo
    
 }
 
-export async function deleteAppointment(req: Request, res: Response): Promise<void> {
+export async function deleteAppointmentImportantCall(req: Request, res: Response): Promise<void> {
     try {
         const { id } = req.params;
-        const appointment = await AppointmentService.deleteAppointment(id);
+        const appointment = await AppointmentImportantCallService.deleteAppointment(id);
         if (appointment) {
             res.status(200).json({ message: 'Delete successful', data: appointment, status: "success", statusCode: 200 });
         } else {
@@ -62,9 +62,9 @@ export async function deleteAppointment(req: Request, res: Response): Promise<vo
     }
 }
 
-export async function getAllAppointments(req: Request, res: Response): Promise<void> {
+export async function getAllAppointmentsImportantCall(req: Request, res: Response): Promise<void> {
     try {
-        const appointment = await AppointmentService.getAll();
+        const appointment = await AppointmentImportantCallService.getAll();
         if (appointment) {
             res.status(200).json({ message: 'Find successful', data: appointment, status: "success", statusCode: 200 });
         } else {

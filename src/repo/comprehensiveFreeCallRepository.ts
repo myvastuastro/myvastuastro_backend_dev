@@ -1,4 +1,4 @@
-import Comprehensive from '../models/comprehensiveModel';
+import ComprehensiveFreeCall from '../models/comprehensiveFreeCallModel';
 export class ComprehensiveRepository {
     static async createComprehensive(data: any): Promise<any> {
         try {
@@ -13,7 +13,7 @@ export class ComprehensiveRepository {
                 ? JSON.parse(comprehensive)
                 : comprehensive;
         
-              const newComprehensive = await Comprehensive.create({
+              const newComprehensive = await ComprehensiveFreeCall.create({
                 userId,
                 vastuAstrologerId,
                 comprehensive: parsedAvailability,
@@ -28,7 +28,7 @@ export class ComprehensiveRepository {
     }
 
     static async getComprehensiveById(id: string): Promise<any | null> {
-        return await Comprehensive.findById(id);
+        return await ComprehensiveFreeCall.findById(id);
     }
 
     static async updateComprehensive(id: string, data: any): Promise<any> {
@@ -38,7 +38,7 @@ export class ComprehensiveRepository {
             data.comprehensive = JSON.parse(data.comprehensive);
           }
          
-          return await Comprehensive.findByIdAndUpdate(
+          return await ComprehensiveFreeCall.findByIdAndUpdate(
             id,
             { $set: { ...data } },
             { new: true }
@@ -50,11 +50,11 @@ export class ComprehensiveRepository {
       }
 
     static async deleteComprehensive(id: string): Promise<any> {
-        return await Comprehensive.deleteOne({ _id: id });
+        return await ComprehensiveFreeCall.deleteOne({ _id: id });
     }
 
     static async getAllComprehensives(): Promise<any[]> {
-        return await Comprehensive.find().populate('userId')
+        return await ComprehensiveFreeCall.find().populate('userId')
   .populate('vastuAstrologerId').populate('professionalId');
     }
 }

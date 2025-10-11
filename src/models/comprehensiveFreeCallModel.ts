@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const comprehensiveSchema = new mongoose.Schema({
+const comprehensivefreeCallSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Types.ObjectId,
     ref: "user",
@@ -33,5 +33,5 @@ const comprehensiveSchema = new mongoose.Schema({
   timestamps: true
 });
 
-const comprehensive = mongoose.model('vastuComprehensive', comprehensiveSchema);
+const comprehensive = mongoose.model('vastuFreeCallComprehensive', comprehensivefreeCallSchema);
 export default comprehensive;

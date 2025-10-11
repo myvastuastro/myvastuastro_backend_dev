@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
-const appointmentSchema = new mongoose.Schema({
+const appointmentImportantCallSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Types.ObjectId,
     ref: "user",
     required: false
   },
   vastuAstrologerId: {
-    type: mongoose.Types.ObjectId,
-    ref: "vastuAstrogler",
-    required: false
-  },
+      type: mongoose.Types.ObjectId,
+      ref: "user",
+      required: false
+    },
   name: {
     type: String,
     required: true
@@ -45,6 +45,6 @@ const appointmentSchema = new mongoose.Schema({
   timestamps: true
 });
 
-const appointment =  mongoose.model('vastuAppointment', appointmentSchema);
+const appointment =  mongoose.model('vastuAppointmentImportantCall', appointmentImportantCallSchema);
 
 export default appointment;

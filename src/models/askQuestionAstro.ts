@@ -14,7 +14,9 @@ const questionAstroSchema = new mongoose.Schema({
     question: { type: String, required: true },
     image: { type: String, required: false  },
     status: { type: String, enum: ["pending", "answered", "in_progress"], default: "pending" },
-    astrologerId: { type: String, default: null },
+    astrologerId: { type: mongoose.Types.ObjectId,
+    ref: "user", 
+    required: false },
     answer: { type: String, default: null },
 }, {
   timestamps: true

@@ -1,9 +1,9 @@
-import { AppointmentRepository } from '../repo/appointmentRepository';
+import { AppointmentImportantCallRepository } from '../repo/appointmentImportantCallRepository';
 
-export class AppointmentService {
+export class AppointmentImportantCallService {
     static async createAppointment(data: any): Promise<any> {
         try {
-            const create = await AppointmentRepository.createAppointment(data);
+            const create = await AppointmentImportantCallRepository.createAppointment(data);
             return create;
 
 
@@ -15,7 +15,7 @@ export class AppointmentService {
 
     static async getById(id: string): Promise<any> {
         try {
-            return await AppointmentRepository.getAppointmentById(id);
+            return await AppointmentImportantCallRepository.getAppointmentById(id);
         } catch (error) {
             throw new Error('Could not get contact');
         }
@@ -23,7 +23,7 @@ export class AppointmentService {
 
     static async updateAppointment(id: string, data: any): Promise<any> {
         try {
-            return await AppointmentRepository.updateAppointment(id, data);
+            return await AppointmentImportantCallRepository.updateAppointment(id, data);
         } catch (error) {
             throw new Error('Could not update contact');
         }
@@ -31,7 +31,7 @@ export class AppointmentService {
 
     static async deleteAppointment(id: string): Promise<any> {
         try {
-            return await AppointmentRepository.deleteAppointment(id);
+            return await AppointmentImportantCallRepository.deleteAppointment(id);
         } catch (error) {
             throw new Error('Could not delete contact');
         }
@@ -39,7 +39,7 @@ export class AppointmentService {
 
     static async getAll(): Promise<any> {
         try {
-            return await AppointmentRepository.getAllAppointments();
+            return await AppointmentImportantCallRepository.getAllAppointments();
         } catch (error) {
             throw new Error('Could not get contacts');
         }

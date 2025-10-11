@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { AskQuestionService } from '../services/askQuestionService';
-export async function createAskQuestion(req: Request, res: Response): Promise<void> {
+import { AskQuestionVastuService } from '../services/askQuestionVastuService';
+export async function createAskQuestionVastu(req: Request, res: Response): Promise<void> {
     try {
-        const askQuestion = await AskQuestionService.createAskQuestion(req.body);
+        const askQuestion = await AskQuestionVastuService.createAskQuestionVastu(req.body);
         if (askQuestion) {
             res.status(200).json({ message: 'Submit successful', data: askQuestion, status: "success", statusCode: 200 });
         } else {
@@ -14,10 +14,10 @@ export async function createAskQuestion(req: Request, res: Response): Promise<vo
     }
 }
 
-export async function getAskQuestion(req: Request, res: Response): Promise<void> {
+export async function getAskQuestionByUserIdVastu(req: Request, res: Response): Promise<void> {
     try {
         const { userId } = req.params;
-        const askQuestion = await AskQuestionService.getById(userId);
+        const askQuestion = await AskQuestionVastuService.getAskQuestionByUserIdVastu(userId);
         if (askQuestion) {
             res.status(200).json({ message: 'Find successful', data: askQuestion, status: "success", statusCode: 200 });
         } else {
@@ -30,10 +30,10 @@ export async function getAskQuestion(req: Request, res: Response): Promise<void>
     }
 }
 
-export async function updateAskQuestion(req: Request, res: Response): Promise<void> {
+export async function updateAskQuestionVastu(req: Request, res: Response): Promise<void> {
     try {
         const { id } = req.params;
-        const askQuestion = await AskQuestionService.updateAskQuestion(id, req.body);
+        const askQuestion = await AskQuestionVastuService.updateAskQuestionVastu(id, req.body);
         if (askQuestion) {
             res.status(200).json({ message: 'Update successful', data: askQuestion, status: "success", statusCode: 200 });
         } else {
@@ -45,10 +45,10 @@ export async function updateAskQuestion(req: Request, res: Response): Promise<vo
    
 }
 
-export async function deleteAskQuestion(req: Request, res: Response): Promise<void> {
+export async function deleteAskQuestionVastu(req: Request, res: Response): Promise<void> {
     try {
         const { id } = req.params;
-        const askQuestion = await AskQuestionService.deleteAskQuestion(id);
+        const askQuestion = await AskQuestionVastuService.deleteAskQuestionVastu(id);
         if (askQuestion) {
             res.status(200).json({ message: 'Delete successful', data: askQuestion, status: "success", statusCode: 200 });
         } else {
@@ -59,9 +59,9 @@ export async function deleteAskQuestion(req: Request, res: Response): Promise<vo
     }
 }
 
-export async function getAllAskQuestions(req: Request, res: Response): Promise<void> {
+export async function getAllAskQuestionsVastu(req: Request, res: Response): Promise<void> {
     try {
-        const askQuestion = await AskQuestionService.getAll();
+        const askQuestion = await AskQuestionVastuService.getAllAskQuestionsVastu();
         if (askQuestion) {
             res.status(200).json({ message: 'Find successful', data: askQuestion, status: "success", statusCode: 200 });
         } else {
@@ -72,11 +72,10 @@ export async function getAllAskQuestions(req: Request, res: Response): Promise<v
     }
 }
 
-// ✅ Answer (Astrologer updates)
 export const answerQuestionVastu = async (req: Request, res: Response) => {
     try {
         const { answer, vastuAstrologerId } = req.body;
-        const updated = await AskQuestionService.answerQuestionVastu(req.params.id, answer, vastuAstrologerId);
+        const updated = await AskQuestionVastuService.answerQuestionVastu(req.params.id, answer, vastuAstrologerId);
 
         if (!updated) {
             return res.status(404).json({ success: false, message: "Question not found" });

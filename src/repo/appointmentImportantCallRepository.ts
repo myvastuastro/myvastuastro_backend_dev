@@ -1,8 +1,8 @@
 // repositories/contactRepository.ts
 
-import Appointment from '../models/appointmentModel';
+import AppointmentImportantCall from '../models/appointmentImportantCallModel';
 
-export class AppointmentRepository {
+export class AppointmentImportantCallRepository {
     static async createAppointment(data: any): Promise<any> {
         try {
             const {
@@ -19,7 +19,7 @@ export class AppointmentRepository {
                 ? JSON.parse(appointment)
                 : appointment;
         
-              const newAppointment = await Appointment.create({
+              const newAppointment = await AppointmentImportantCall.create({
                 userId,
                 vastuAstrologerId,
                 name,
@@ -37,7 +37,7 @@ export class AppointmentRepository {
     }
 
     static async getAppointmentById(id: string): Promise<any | null> {
-        return await Appointment.findById(id);
+        return await AppointmentImportantCall.findById(id);
     }
 
     static async updateAppointment(id: string, data: any): Promise<any> {
@@ -46,7 +46,7 @@ export class AppointmentRepository {
             data.appointment = JSON.parse(data.appointment);
           }
          
-          return await Appointment.findByIdAndUpdate(
+          return await AppointmentImportantCall.findByIdAndUpdate(
             id,
             { $set: { ...data } },
             { new: true }
@@ -58,10 +58,10 @@ export class AppointmentRepository {
       }
 
     static async deleteAppointment(id: string): Promise<any> {
-        return await Appointment.deleteOne({ _id: id });
+        return await AppointmentImportantCall.deleteOne({ _id: id });
     }
 
     static async getAllAppointments(): Promise<any[]> {
-        return await Appointment.find();
+        return await AppointmentImportantCall.find();
     }
 }

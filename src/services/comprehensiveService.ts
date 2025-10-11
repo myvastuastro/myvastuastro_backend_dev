@@ -1,6 +1,6 @@
 // services/contactService.ts
 
-import { ComprehensiveRepository } from '../repo/comprehensiveRepository';
+import { ComprehensiveRepository } from '../repo/comprehensiveFreeCallRepository';
 
 export class ComprehensiveService {
     static async createComprehensive(data: any): Promise<any> {

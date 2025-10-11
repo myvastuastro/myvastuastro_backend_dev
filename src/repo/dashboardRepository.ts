@@ -3,7 +3,7 @@ import User from "../models/user";
 import Payment from "../models/PaymentModel";
 import vastuAstrogler from "../models/vastuAstrologer";
 import VastuTip from "../models/vastuTip";
-import Question from "../models/askQuestion";
+import Question from "../models/askQuestionVastu";
 import Notification from "../models/notificationModel"; // Assuming you have a Notification model
 
 export class DashboardRepository {

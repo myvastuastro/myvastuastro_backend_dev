@@ -1,5 +1,4 @@
 "use strict";
-// services/contactService.ts
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -10,13 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ComprehensiveService = void 0;
-const comprehensiveFreeCallRepository_1 = require("../repo/comprehensiveFreeCallRepository");
-class ComprehensiveService {
-    static createComprehensive(data) {
+exports.AppointmentImportantCallService = void 0;
+const appointmentImportantCallRepository_1 = require("../repo/appointmentImportantCallRepository");
+class AppointmentImportantCallService {
+    static createAppointment(data) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const create = yield comprehensiveFreeCallRepository_1.ComprehensiveRepository.createComprehensive(data);
+                const create = yield appointmentImportantCallRepository_1.AppointmentImportantCallRepository.createAppointment(data);
                 return create;
             }
             catch (error) {
@@ -27,27 +26,27 @@ class ComprehensiveService {
     static getById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                return yield comprehensiveFreeCallRepository_1.ComprehensiveRepository.getComprehensiveById(id);
+                return yield appointmentImportantCallRepository_1.AppointmentImportantCallRepository.getAppointmentById(id);
             }
             catch (error) {
                 throw new Error('Could not get contact');
             }
         });
     }
-    static updateComprehensive(id, data) {
+    static updateAppointment(id, data) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                return yield comprehensiveFreeCallRepository_1.ComprehensiveRepository.updateComprehensive(id, data);
+                return yield appointmentImportantCallRepository_1.AppointmentImportantCallRepository.updateAppointment(id, data);
             }
             catch (error) {
                 throw new Error('Could not update contact');
             }
         });
     }
-    static deleteComprehensive(id) {
+    static deleteAppointment(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                return yield comprehensiveFreeCallRepository_1.ComprehensiveRepository.deleteComprehensive(id);
+                return yield appointmentImportantCallRepository_1.AppointmentImportantCallRepository.deleteAppointment(id);
             }
             catch (error) {
                 throw new Error('Could not delete contact');
@@ -57,7 +56,7 @@ class ComprehensiveService {
     static getAll() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                return yield comprehensiveFreeCallRepository_1.ComprehensiveRepository.getAllComprehensives();
+                return yield appointmentImportantCallRepository_1.AppointmentImportantCallRepository.getAllAppointments();
             }
             catch (error) {
                 throw new Error('Could not get contacts');
@@ -65,4 +64,4 @@ class ComprehensiveService {
         });
     }
 }
-exports.ComprehensiveService = ComprehensiveService;
+exports.AppointmentImportantCallService = AppointmentImportantCallService;
